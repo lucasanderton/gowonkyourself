@@ -5,7 +5,6 @@ date: "1/3/2020"
 output:
   html_document:
     df_print: paged
-  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -15,41 +14,14 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library("tidyverse")
 library("fivethirtyeight")
-library("elections")
-```
 
-# Lucas sandbox
-## Endorsements Over Time
-```
-endorsements <- endorsements_2020
-endorsements %>% ggplot(endorsements, aes(endorsee, ..count..)) + geom_bar(endorsements, aes(fill = endorser))
-```
-
-## Vizualizing Fruit Data
-```
-Fruit <- c(rep("Apple",3),rep("Orange",5))
-Bug <- c("worm","spider","spider","worm","worm","worm","worm","spider")
-
-df <- data.frame(Fruit,Bug)
-
-ggplot(df, aes(Fruit, ..count..)) + geom_bar(aes(fill = Bug), position = "dodge")
 ```
 
 ```{r}
-data(airquality)
-str(airquality)
-plot(airquality$Ozone, airquality$Wind)
+
 ```
+
+
 ```{r}
-# Hex color codes for Dem Blue and Rep Red
-party_colors <- c("#2E74C0", "#CB454A") 
 
-p0 <- ggplot(data = subset(elections, st %nin% "DC"),
-             mapping = aes(x = r_points,
-                           y = reorder(state, r_points),
-                           color = party))
 ```
-
-
-
-
