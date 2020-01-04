@@ -1,0 +1,21 @@
+---
+title: "FiveThirtyEight_Trial"
+author: "Lucas_And_Eddie"
+date: "1/3/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library("tidyverse")
+library("fivethirtyeight")
+```
+
+```{r}
+
+```
+
+
