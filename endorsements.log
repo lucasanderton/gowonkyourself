@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.2)  3 JAN 2020 21:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2020.1.2)  3 JAN 2020 21:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -469,10 +469,8 @@ Package hyperref Info: Option `breaklinks' set `true' on input line 35.
 
 (/Users/lucasanderton/Library/TinyTeX/texmf-dist/tex/latex/geometry/geometry.st
 y
-Package: geometry 2018/04/16 v5.8 Page Geometry
-(/Users/lucasanderton/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifpdf.sty
-Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
-) (/Users/lucasanderton/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+(/Users/lucasanderton/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
 \Gm@cnth=\count110
@@ -696,10 +694,10 @@ Type  H <return>  for immediate help.
 l.122 \end{verbatim}
                      
 Here is how much of TeX's memory you used:
- 10889 strings out of 494107
- 157427 string characters out of 6170495
- 215861 words of memory out of 5000000
- 14822 multiletter control sequences out of 15000+600000
+ 10883 strings out of 494107
+ 157228 string characters out of 6170495
+ 215780 words of memory out of 5000000
+ 14818 multiletter control sequences out of 15000+600000
  26304 words of font info for 36 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  40i,6n,34p,237b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
