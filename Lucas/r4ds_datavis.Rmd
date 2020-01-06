@@ -1,0 +1,58 @@
+---
+title: "Ch3 Data Visualization"
+author: "Lucas Anderton"
+date: "1/5/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+# Data Visualization
+### 3.2
+```{r}
+mpg
+
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = hwy, y = cyl))
+
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = class, y = drv))
+```
+
+**Graphing Template**
+```
+ggplot(data = <DATA>) + 
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+```
+
+**Exercises**
+
+3. What does the `drv` variable describe? **`drv` describes whether the vehicle is front-wheel drive, rear-wheel drive, or 4-wheel drive.**
+5. What happens if you make a scatterplot of `class` vs `drv`? Why is the plot not useful? Both values are categorative and most car models offer each type of drive. 
+
+### 3.3
+```{r}
+# Adding a color aesthetic
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, color = class))
+
+# Adding an alpha aesthetic, which adjusts transparency
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, alpha = class))
+
+# Adding a shape aesthetic
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy, shape = class))
+
+# Manually setting aesthetic properties
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
+
+```
+
