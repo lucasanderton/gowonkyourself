@@ -1,0 +1,41 @@
+---
+title: "Day 4"
+author: "Lucas Anderton"
+date: "1/6/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Running Lowess
+
+```{r}
+x <- seq(1,25,length = 600)
+y <- (2/(pi*x))^(0.5)*(1-cos(x)) + rnorm(100,0,1/10)
+summary(lm(y~x))$coef
+
+#postscript("Class.Multilevel/trends1.ps")
+par(mar = c(3, 3, 2, 2), bg = "white") # adjusts the marginns and background
+plot(x, y, pch = "+") # sets the plot points as a plus
+ols.object <- lm(y ~ x)
+abline(ols.object, col = "blue") # plots the regression line
+lo.object <- lowess(y ~ x, f = 2/3) # smooths the line; the bigger the number, the smoother it is
+lines(lo.object$x, lo.object$y, lwd = 2, col = "red")
+lo.object <- lowess(y ~ x, f = 1/5)
+lines(lo.object$x, lo.object$y, lwd = 2, col = "purple")
+#dev.off()
+```
+
+## What does the Linear Model get you?
+
+```{r}
+anaemia <- read.table("http://jeffgill.org/files/jeffgill/files/anaemia.dat_.txt", header=TRUE, row.names=1)
+a.lm.out <- lm(Hb ~ Age + PCV, data=anaemia)
+summary(a.lm.out)
+```
+
+Check out `cooks.distance` for determining how influential a value is on regression. 
+
+
