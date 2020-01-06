@@ -56,3 +56,87 @@ ggplot(data = mpg) +
 
 ```
 
+**Exercises**
+
+```
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy, color = "blue"))
+```
+
+1. What's gone wrong with this code? **the color needs to be removed from inside the parentheses for manually setting aeshetic characters, like `mapping = aes(x = displ, y = hwy), color = "blue"))`**
+2. Which variables in `mpg` are categorical? **Out of 11 variables, 6 are categorical and 5 are continuous**
+3. Map a continuous variable to color, size, and shape. How do these aesthetics behave differently for categorical vs. continuous variables? **Continuous variables differ from categorical variables in these variables by creating quantative spectrums rather than individual color codes.**
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping=aes(x = displ, y = hwy, color = cty))
+```
+
+4. What happens if you map the same variable to multiple aesthetics? **Applies a color gradient that goes in the same direction as the axis of the same variable**
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping=aes(x= displ, y = hwy, color = hwy))
+```
+
+5. What does the `stroke` aesthetic do? What shapes does it work with? **Modifies the width of the border on shapes which have borders.**
+
+```{r}
+ggplot(data = mpg, aes(x = displ, y = hwy)) +
+  geom_point(shape = 21, color = "black", fill = "white", size = 5, stroke = 5)
+```
+
+6. What happens if you map an aesthetic to something other than a variable name, like `aes(color = displ < 5) `? (Specify x and y) **It does conditional aesthetics based off whether or not it fufills the criteria**
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping=aes(color = displ < 5, x = hwy, y = cty))
+```
+
+### 3.5 Facets
+
+To facet your plot by a single variable, use `facet_wrap()`. The first argument of `facet_wrap()` should be a formula, which you create with `~` followed by a variable name (here “formula” is the name of a data structure in R, not a synonym for “equation”). The variable that you pass to `facet_wrap()` should be discrete.
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_wrap(~ class, nrow = 2)
+```
+
+To facet your plot on the combination of two variables, add `facet_grid()` to your plot call. The first argument of `facet_grid()` is also a formula. This time the formula should contain two variable names separated by a `~`.
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(drv ~ cyl) # can't set a nrow here because the rows is determined by number of variables in 'cyl'
+```
+
+If you prefer to not facet in the rows or columns dimension, use a . instead of a variable name, e.g. `+ facet_grid(. ~ cyl)`.
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy)) +
+  facet_grid(. ~ cyl)
+```
+
+**Exercises**
+
+1. What happens if you facet on a continuous variable? **Partitions by that continuous variable**
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(displ, hwy)) +
+  facet_grid(~year)
+```
+
+2. What do the empty cells in plot with `facet_grid(drv ~ cyl) ` mean? How do they relate to this plot? **It means there is no overlap with those two variables, drive and number of cylinders, which is confirmed by the lack of dots at intersectinos in the plot below.**
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(drv, cyl))
+```
+
+
+
+
+
