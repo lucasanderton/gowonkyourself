@@ -136,6 +136,63 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(drv, cyl))
 ```
 
+3. What plots does the following code make? What does `.` do? **The following code plots engine displacement against highway miles per gallon and splits the values up by drive style in the first plot and number of cylinders in the second. The `.` plots these facets against themselves, rather than another variable**
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping=aes(displ, hwy)) +
+  facet_grid(drv ~ .)
+
+ggplot(data = mpg) +
+  geom_point(mapping = aes(displ, hwy)) +
+  facet_grid(cyl ~ .)
+```
+
+4. Take the first plot in this section:
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy)) + 
+  facet_wrap(~ class, nrow = 2)
+```
+
+What are the advantages to using faceting instead of the colour aesthetic? What are the disadvantages? How might the balance change if you had a larger dataset? **To me, the greates advantage of faceting is splitting up data that is very noisy or busy in a small range of space. It spreads out similar data much more, but it makes specific comparisoners harder since the data isn't on the same plane.**
+
+5. What does `nrow` do? What does `ncol` do? What other options control the layout of the individual panels? Why doesn’t `facet_grid()` have `nrow` and `ncol` arguments? **`nrow` and `ncol` set the number of rows and columns, respectively. `facet_grid()` doesn't have it because the two variables selected determines the number of rows and columns.**
+
+6. When using `facet_grid()` you should usually put the variable with more unique levels in the columns. Why? **There will be more space for columns if the plot is laid out horizontally (landscape).**
+
+### 3.6 Geometric Objects
+
+To change the geom in your plot, change the geom function that you add to `ggplot()`. For instance, to make the plots above, you can use this code:
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(displ, hwy))
+
+ggplot(data = mpg) + 
+  geom_smooth(mapping = aes(displ, hwy))
+```
+
+Every geom function in `ggplot2` takes a mapping argument. However, not every aesthetic works with every geom. You could set the shape of a point, but you couldn’t set the “shape” of a line. On the other hand, you could set the linetype of a line. `geom_smooth()` will draw a different line, with a different linetype, for each unique value of the variable that you map to linetype.
+
+```{r}
+ggplot(data = mpg) +
+  geom_smooth(mapping = aes (displ, hwy, linetype = drv))
+```
+
+To display multiple geoms in the same plot, add multiple geom functions to `ggplot():`
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(displ, hwy)) +
+  geom_smooth(mapping = aes(displ, hwy))
+```
+
+
+
+
+
 
 
 

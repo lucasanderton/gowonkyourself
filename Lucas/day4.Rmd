@@ -38,4 +38,25 @@ summary(a.lm.out)
 
 Check out `cooks.distance` for determining how influential a value is on regression. 
 
+## Milticollinearity: Remedies
+
+- Respecify model (if reasonable): add/drop variables, add data cases that break the patternn, restrict the rannge of some variables, combine variables possibly with PCA. 
+- Center explanatory variables, or stanndardize (slope coefficient is interpreted in nunnits of standard deviations of the covariate, the interecept is the mean of the outcome `y` when all covariate values are zero).
+- Create a new variable that is a weighted combination of highly correlated variables and use it to replace both (two variables to one variable in the model)
+- Ridge regression (see below)
+
+## Simple Ridge Regression Example
+
+```{r}
+anaemia <- read.table("http://jeffgill.org/files/jeffgill/files/anaemia.dat_.txt", header=TRUE, row.names=1)
+library(MASS)
+a.lm3.out <- lm.ridge(Hb ~ Age + Menapouse + I(Age + rnorm(nrow(anaemia))), data = anaemia)
+a.lm3.out$GCV
+
+cbind(a.lm3.out$coef, sqrt(a.lm3.out$scales))
+
+summary(lm(Hb ~ Age + Menapouse, data = anaemia))$coef[2:3,1:2]
+```
+
+
 
